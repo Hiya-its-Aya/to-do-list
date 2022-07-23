@@ -5,13 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Bit Done</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js" defer></script>
  </head>
  <body>
-   <header></header>
+   <header>
+      <h1> Get Bit Done: <br> A Developer's To-Do List </h1>
+      
+   </header>
    <div id="sidebar">
-      <div id="today">Today</div>
-      <div id="this-week">This Week</div>
+      <div class="content">
+         <h3>Due</h3>
+         <button class="add" id="inbox">Inbox</button>
+         <button class="add" id="today">Today</button>
+         <button class= "add" id="this-week">This Week</button>
+         <button class="add"  id="archived">Archived</button> 
+         <h3 id="projects">Projects</h3>
+         <button class = "add" id="add-project"> Add Project </button> 
+         <!-- <h3 id="timer">Pomodoro Timer</h3> -->
+      </div>
    </div>
    <div id="container"></div>
+   <footer> Made by Aya Moosa</footer>
  </body>
  </html>

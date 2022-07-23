@@ -1,0 +1,1 @@
+(()=>{class e{constructor(e,t){this.name=e,this.selector=t}makePage(){const e=document.querySelector("#container"),t=document.createElement("h2");t.textContent=this.name,e.appendChild(t)}pgButton(){this.selector.setAttribute=".active"}}const t=document.querySelector("#inbox"),n=new e("Inbox");new e("Today"),new e("This Week"),t.addEventListener("click",(()=>{n.makePage()}))})();

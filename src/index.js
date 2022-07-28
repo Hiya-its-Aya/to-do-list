@@ -17,7 +17,7 @@ import { toDate, isToday, isThisWeel, subDays, format } from 'date-fns'
             h2.textContent = this.name;
             container.appendChild(h2);
         }
-        handleInbox(){
+        handleProjects(){
 
         }
     }
@@ -55,13 +55,16 @@ import { toDate, isToday, isThisWeel, subDays, format } from 'date-fns'
 
         newProjPrompt(){
             const newProj= document.querySelector("#project-container")
-            newProj.replaceChildren("")
-            newProj.innerHTML += `
-            <input type="text" id="proj-name" name="proj-name">
-            <button id = "add-proj">Add</button>
-            <button id = "cancel-proj">Cancel</button>
+            const addProj = document.querySelector("#add-project")
+            addProj.remove();
+            const prompt = document.createElement("div");
+            prompt.className = "new-proj-prompt"
+            prompt.innerHTML += `
+                <input type="text" id="proj-name" name="proj-name">
+                <button id = "add-proj">Add</button>
+                <button id = "cancel-proj">Cancel</button>
             `
-            newProj.append();
+            newProj.append(prompt);
             this.newProjButtons();
         }
 
@@ -69,36 +72,63 @@ import { toDate, isToday, isThisWeel, subDays, format } from 'date-fns'
             const addProj = document.querySelector('#add-proj');
             const cancelProj = document.querySelector("#cancel-proj");
             const projName = document.querySelector("#proj-name")
+
             addProj.addEventListener("click", () => {
                 this.handleAdd(projName.value);
-                // this.replaceProj()
+                this.replaceProj();
             })
-            // cancelProj.addEventListener("click", this.replaceProj())
+            // addProj.addEventListener("keypress",function (e){
+            //     if (e.key === 'Enter'){
+            //         this.handleAdd(projName.value);
+            //     }   
+            // })
+            cancelProj.addEventListener("click", () => {
+                this.replaceProj();
+            })
         }
-        // replaceProj(){
-        //     const newProj= document.querySelector("#project-container");
-        //     newProj.replaceChildren("")
-        // }
+        replaceProj(){
+            const projPrompt= document.querySelector(".new-proj-prompt");
+            const container = document.querySelector("#project-container");
+            const newProjButton = document.createElement("button")
+            newProjButton.className = "add";
+            newProjButton.setAttribute("id", "add-project");
+            newProjButton.textContent = "Add Project"
+            container.appendChild(newProjButton);
+            projPrompt.remove()
+            newProjButton.addEventListener("click", ()=>{
+                this.newProjPrompt();
+            })
+        }   
+
         handleAdd(name){
             const newProj= document.querySelector("#project-container");
             const projItem = document.createElement("button");
-            projItem.textContent = name;
+            projItem.innerHTML = name  + "<button><img src=\"#\" style=\" width: 1rem; height: 1rem;\"></button>"; 
             newProj.appendChild(projItem);
             
             const projpg = new Page(name);
             projpg.makeTitle();
+
+            projItem.addEventListener("click", ()=>{
+                projpg.makeTitle();
+            })
         }
 
     }
 
     class ListItems{
+        makeItem(){
+            const container = document.querySelector("#continer");
+            
+        }
+        sortItem(){
 
+        }
+        deleteItem(){
+
+        }
+        archiveItem(){
+
+        }
     }
-
-//put items in today or this week
-
-    // make projeccts tab, and add projects and put accordingly
-
-//handleProjects 
-//handle
 })()

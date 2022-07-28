@@ -94,6 +94,10 @@ h3{
     font-weight: 500;
     font-size: 1.2rem;
 }
+#project-container{
+    display: flex;
+    flex-direction: column-reverse;
+}
 #container{
     grid-row: 2/12;
     grid-column: 2/10;

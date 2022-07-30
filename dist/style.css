@@ -86,7 +86,7 @@ h1{
     padding: .5rem;
     flex-direction: column;
 }
-.content > *{
+.content *{
     padding: .5rem;
     background-color:  lightgray;
 }
@@ -116,6 +116,11 @@ h3{
 .add .active{
     background-color: rgb(174, 174, 174);
     font-weight: 600;
+}
+
+#remove-image:hover{
+    background-color: darkgray;
+    border-radius: 5px;
 }
 footer{
     background-color: black;

@@ -57,27 +57,29 @@ table {
 body{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(11, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     height: 100vh;
 }
 header{
     background-color:dimgray;
     grid-row:1/2;
-    grid-column: 1/10;
+    grid-column: 1/9;
     font-family:'Courier New', Courier, monospace;
     font-weight: 700; 
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     color: white;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 h1{
     padding-left: 1rem;
 }
 
 #sidebar{
-    grid-row: 2/12;
+    grid-row: 2/11;
     grid-column: 1/2;
     background-color:  lightgray;
 }
@@ -102,7 +104,7 @@ h3{
     grid-row: 2/12;
     grid-column: 2/10;
 }
-.add{
+button{
     display: flex;
     align-items: flex-start;
     border: 0;
@@ -110,22 +112,27 @@ h3{
     font-weight: 500;
     font-size: .9rem;
 }
-.add:hover{
+button:hover{
     background-color: rgb(174, 174, 174);
 }
-.add .active{
+button:focus{
     background-color: rgb(174, 174, 174);
     font-weight: 600;
 }
+#remove-image{
+    background-color: rgb(174, 174, 174);
+    ;
+}
 
 #remove-image:hover{
-    background-color: darkgray;
+    background-color: dimgray;
     border-radius: 5px;
 }
+
 footer{
     background-color: black;
-    grid-column: 1/10;
-    grid-row: 12;
+    grid-column: 1/8;
+    grid-row: 11;
     color: white;
     padding: 1rem;
     display: flex;

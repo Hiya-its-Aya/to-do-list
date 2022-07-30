@@ -5,9 +5,10 @@ import image from "./img/x-symbol.svg"
 // add ui for adding tasks         
 
 class Page{
-    constructor(name, lowercase){
+    constructor(name, lowercase, selector){
         this.name = name;
         this.lowercase = lowercase;
+        this.selector = selector;
     }
     makeTitle(){
         const container = document.querySelector("#container");
@@ -19,6 +20,10 @@ class Page{
         container.appendChild(h2);
         container.appendChild(newContainer);
     }
+    addRemoveBtn(){
+        handleRemoveButton(this.selector)
+    }
+
 }
 
 const inbox = document.querySelector("#inbox");
@@ -26,10 +31,12 @@ const today = document.querySelector("#today");
 const thisWeek = document.querySelector("#this-week");
 const archived = document.querySelector("#archived");
 
-const inboxpg = new Page("Inbox", "inbox");
-const todaypg = new Page("Today", "today");
-const thisWeekpg = new Page("This Week", "this-week");
-const archivedpg = new Page("Archived","archive");
+const inboxpg = new Page("Inbox", "inbox", inbox);
+const todaypg = new Page("Today", "today", today);
+const thisWeekpg = new Page("This Week", "this-week", thisWeek);
+const archivedpg = new Page("Archived","archive", archived);
+
+const pgArray = [inboxpg, todaypg, thisWeekpg, archivedpg]
 
 inbox.addEventListener("click", () =>{
     inboxpg.makeTitle();
@@ -44,11 +51,14 @@ archived.addEventListener("click", () =>{
     archivedpg.makeTitle();
 });
 
+
+
 const addProject = document.querySelector("#add-project")
 const addProjpg = new Project()
 addProject.addEventListener("click", ()=>{
     addProjpg.newProjPrompt();
 })
+
 
 class Project{
 
@@ -59,8 +69,8 @@ class Project{
         const prompt = document.createElement("div");
         prompt.className = "new-proj-prompt"
         prompt.innerHTML += `
-            <input type="text" id="proj-name" name="proj-name">
-            <button id = "add-proj">Add</button>
+            <input type="text" id="proj-name" name="proj-name" required>
+            <button type="submit" id = "add-proj">Add</button>
             <button id = "cancel-proj">Cancel</button>
         `
         newProj.append(prompt);
@@ -130,9 +140,9 @@ class ListItems{
     deleteItem(){
 
     }
-    archiveItem(){
+    // archiveItem(){
 
-    }
+    // }
 }
 
 function handleRemoveButton(btn){
@@ -147,11 +157,10 @@ function handleRemoveButton(btn){
         btn.removeChild(remove);
     });
 
-    // remove.addEventListener("click", ()=>{removeItem(btn)})
+    remove.addEventListener("click", ()=>{removeItem(btn)})
 
 }
 
-// function removeItem(btn){
-//     const archive = [btn];
-    
-// }
+function removeItem(btn){
+    btn.remove()
+}

@@ -145,7 +145,10 @@ input:focus{
    outline: none;
    box-shadow: 1px 2px 5px darkgrey;
 }
-
+#inbox-content{
+    display: flex;
+    flex-direction: column-reverse;
+}
 
 
 footer{

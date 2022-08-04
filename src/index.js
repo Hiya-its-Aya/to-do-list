@@ -3,6 +3,8 @@ import image from "./img/x-symbol.svg";
 
 //make inbox for tasks
 // add ui for adding tasks
+
+
 const page = (name, lowercase, selector) =>{
     
   const makeTitle = () => {
@@ -14,7 +16,7 @@ const page = (name, lowercase, selector) =>{
       newContainer.id = lowercase + "-content";
       container.appendChild(h2);
       container.appendChild(newContainer);
-      if (selector.id === "inbox" ||  selector.id === "new-project"){
+      if (selector.id === "inbox"){s
         handleAddItemButton(newContainer);
       }
     };
@@ -23,82 +25,84 @@ const page = (name, lowercase, selector) =>{
       addItemButton.setAttribute("id","add-list-item");
       addItemButton.textContent ="Add List Item";
       container.appendChild(addItemButton);
-      const list = ListItems(name, container, addItemButton)
+      // const list = ListItems(name, container, addItemButton)
       addItemButton.addEventListener("click", ()=>{
-        list.makeItem();
+        document.querySelector("#popup").style.display ="block";
+        handlePopup();
       })
     }
       
   return{name, lowercase, selector, makeTitle, handleRemoveButton}
 }
 // --------------------------------------Project------------------------------//
-const Project = (addProj) => {
-  const newProjPrompt = () => {
-    const newProj = document.querySelector("#project-container");
-    addProj.remove();
-    const prompt = document.createElement("div");
-    prompt.className = "new-proj-prompt";
-    prompt.innerHTML += `
-            <input type="text" id="proj-name" name="proj-name" required>
-            <button type="submit" id = "add-proj">Add</button>
-            <button id = "cancel-proj">Cancel</button>
-        `;
-    newProj.append(prompt);
-    newProjButtons();
-  }
+// const Project = (addProj) => {
+//   const newProjPrompt = () => {
+//     const newProj = document.querySelector("#project-container");
+//     addProj.remove();
+//     const prompt = document.createElement("div");
+//     prompt.className = "new-proj-prompt";
+//     prompt.innerHTML += `
+//             <input type="text" id="proj-name" name="proj-name" required>
+//             <button type="submit" id = "add-proj">Add</button>
+//             <button id = "cancel-proj">Cancel</button>
+//         `;
+//     newProj.append(prompt);
+//     newProjButtons();
+//   }
 
-  const newProjButtons = () => {
-    const addProj = document.querySelector("#add-proj");
-    const cancelProj = document.querySelector("#cancel-proj");
-    const projName = document.querySelector("#proj-name");
+//   const newProjButtons = () => {
+//     const addProj = document.querySelector("#add-proj");
+//     const cancelProj = document.querySelector("#cancel-proj");
+//     const projName = document.querySelector("#proj-name");
 
-    addProj.addEventListener("click", () => {
-      handleAdd(projName.value);
-      replaceProj();
-    });
-    // addProj.addEventListener("keypress",function (e){
-    //     if (e.key === 'Enter'){
-    //         this.handleAdd(projName.value);
-    //     }
-    // })
-    cancelProj.addEventListener("click", () => {
-      replaceProj();
-    });
-  }
-  const replaceProj = () => {
-    const projPrompt = document.querySelector(".new-proj-prompt");
-    const container = document.querySelector("#project-container");
-    const newProjButton = document.createElement("button");
-    newProjButton.className = "add";
-    newProjButton.setAttribute("id", "add-project");
-    newProjButton.textContent = "Add Project";
-    container.appendChild(newProjButton);
-    projPrompt.remove();
-    newProjButton.addEventListener("click", () => {
-      newProjPrompt();
-    });
-  }
+//     addProj.addEventListener("click", () => {
+//       handleAdd(projName.value);
+//       replaceProj();
+//     });
+//     // addProj.addEventListener("keypress",function (e){
+//     //     if (e.key === 'Enter'){
+//     //         this.handleAdd(projName.value);
+//     //     }
+//     // })
+//     cancelProj.addEventListener("click", () => {
+//       // replaceProj();
+//     });
+//   }
+//   const replaceProj = () => {
+//     const projPrompt = document.querySelector(".new-proj-prompt");
+//     const container = document.querySelector("#project-container");
+//     const newProjButton = document.createElement("button");
+//     newProjButton.className = "add";
+//     newProjButton.setAttribute("id", "add-project");
+//     newProjButton.textContent = "Add Project";
+//     container.appendChild(newProjButton);
+//     projPrompt.remove();
+//     newProjButton.addEventListener("click", () => {
+//       newProjPrompt();
+//     });
+//   }
 
-  const handleAdd = (name) => {
-    const newProj = document.querySelector("#project-container");
-    const projItem = document.createElement("button");
-    projItem.setAttribute("id", "new-project");
-    projItem.innerHTML = name;
+//   const handleAdd = (name) => {
+//     const newProj = document.querySelector("#project-container");
+//     const projItem = document.createElement("button");
+//     projItem.setAttribute("id", "new-project");
+//     projItem.innerHTML = name;
     
 
-    newProj.appendChild(projItem);
+//     newProj.appendChild(projItem);
 
-    const projpg = page(name, name.toLowerCase(), projItem.id);
-    projpg.makeTitle();
+//     localStorage.setItem("myItem", projItem)
+//     const projpg = page(name, name.toLowerCase(), projItem.id);
+//     projpg.makeTitle();
 
-    projItem.addEventListener("click", () => {
-      projpg.makeTitle();
-    });
+//     projItem.addEventListener("click", () => {
+//       projpg.makeTitle();
+//     });
 
-    handleRemoveButton(projItem);
-  }
-  return{addProj, newProjButtons, replaceProj, newProjPrompt, handleAdd}
-}
+//     handleRemoveButton(projItem);
+//   }
+//   return{addProj, newProjButtons, replaceProj, newProjPrompt, handleAdd}
+// }
 
 //-------------------------------list-------------------------------------//
 const ListItems = (name,container, addItem) =>  {
@@ -127,7 +131,7 @@ const ListItems = (name,container, addItem) =>  {
       const date = document.querySelector("#item-due-date")
   
       addItembtn.addEventListener("click", () => {
-        handleAdd(itemName.value);
+        handleAdd(itemName.value, date.value);
         replaceItem(prompt);
       });
       // addProj.addEventListener("keypress",function (e){
@@ -141,7 +145,7 @@ const ListItems = (name,container, addItem) =>  {
     }
     const replaceItem = (prompt) => {
       const newItem = document.createElement("button");
-      newItem.className = "add";
+      newItem.className = "add-item";
       newItem.setAttribute("id", "add-list-item");
       newItem.textContent = "Add List Item";
       container.appendChild(newItem);
@@ -151,13 +155,14 @@ const ListItems = (name,container, addItem) =>  {
       });
     }
   
-    const handleAdd = (name) => {
+    const handleAdd = (name, date) => {
       const item = document.createElement("button");
       item.setAttribute("id", "new-item");
-      item.textContent = name;
+      item.textContent = name + " Due: " + date; 
       
       container.appendChild(item);
-  
+
+      localStorage.setItem("myItem", item);
       handleRemoveButton(item);
     }
     newItemPrompt(); 
@@ -192,6 +197,7 @@ function handleRemoveButton(btn) {
 
   remove.addEventListener("click", () => {
     removeItem(btn);
+    localStorage.removeItem(btn);
   });
 }
 
@@ -199,15 +205,21 @@ function removeItem(btn) {
   btn.remove();
 }
 
+
+function handlePopup(){
+
+
+}
+
 const inbox = document.querySelector("#inbox");
 const today = document.querySelector("#today");
 const thisWeek = document.querySelector("#this-week");
-const archived = document.querySelector("#archived");
+// const archived = document.querySelector("#archived");
 
 const inboxpg = page("Inbox", "inbox", inbox);
 const todaypg = page("Today", "today", today);
 const thisWeekpg =page("This Week", "this-week", thisWeek);
-const archivedpg = page("Archived", "archive", archived);
+// const archivedpg = page("Archived", "archive", archived);
 
 inbox.addEventListener("click", () => {
   inboxpg.makeTitle();
@@ -222,9 +234,9 @@ thisWeek.addEventListener("click", () => {
 //   archivedpg.makeTitle();
 // });
 
-const addProject = document.querySelector("#add-project");
-const addProjpg = Project(addProject);
-addProject.addEventListener("click", () => {
-  addProjpg.newProjPrompt();
-});
+// const addProject = document.querySelector("#add-project");
+// const addProjpg = Project(addProject);
+// addProject.addEventListener("click", () => {
+//   addProjpg.newProjPrompt();
+// });
 

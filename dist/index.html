@@ -9,8 +9,19 @@
     <script src="./main.js" defer></script>
  </head>
  <body>
+   <div class="popup" id="popup">
+      <form>
+         <input type="text" id="item-name" name="item-name" required>
+         <input type="date" id="item-due-date" required>
+         <label for="item-due-date">Due Date</label> 
+         <button type="submit" id = "add-item">Add</button>
+         <button id = "cancel-item">Cancel</button>
+       </form>
+    </div>
    <header>
-      <h1> Get Bit Done: <br> A Developer's To-Do List </h1>
+      <h1> Get Bit Done: </h1>
+      <br>
+      <h2>A Developer's To-Do List </h2>
       
    </header>
    <div id="sidebar">
@@ -19,14 +30,15 @@
          <button class="add" id="today">Today</button>
          <button class= "add" id="this-week">This Week</button>
          <!-- <button class="add"  id="archived">Archived</button>  -->
-         <h3 id="projects">Projects</h3>
+         <!-- <h3 id="projects">Projects</h3>
          <div id="project-container">
             <button class = "add" id="add-project"> Add Project </button> 
-         </div>
+         </div> -->
          <!-- <h3 id="timer">Pomodoro Timer</h3> -->
       </div>
    </div>
-   <div id="container"></div>
+   <div id="container">
+   </div>
    <footer> Made by Aya Moosa</footer>
  </body>
  </html>

@@ -102,10 +102,44 @@ h3{
     font-weight: 500;
     font-size: 1.2rem;
 }
-#project-container{
+#project-container,
+.add-proj-container{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
+
+.add-proj-container{
+    padding: 0%;
+    /* height: 4rem; */
+    justify-content: center;
+}
+
+#proj-action-buttons{
+    padding: 0%;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    justify-content: center;
+}
+
+#proj-action-buttons > *{
+    border:rgb(174, 174, 174);
+    background-color: white;
+}
+
+
+#add-project{
+   justify-content: center;
+   font-weight: 700;
+}
+
+#create-proj{
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+
+
 #container{
     grid-row: 2/11;
     grid-column: 2/10;

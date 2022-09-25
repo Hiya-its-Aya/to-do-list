@@ -26,19 +26,36 @@
    </header>
    <div id="sidebar">
       <div class="content">
-         <button class="add" id="inbox">Inbox</button>
-         <button class="add" id="today">Today</button>
-         <button class= "add" id="this-week">This Week</button>
+         
+         <!-- <button class="add" id="today">Today</button>
+         <button class= "add" id="this-week">This Week</button> -->
          <!-- <button class="add"  id="archived">Archived</button>  -->
-         <!-- <h3 id="projects">Projects</h3>
+          <h3 id="projects"> Projects </h3>
          <div id="project-container">
-            <button class = "add" id="add-project"> Add Project </button> 
-         </div> -->
+            <div class="add-proj-container">
+
+               <button class = "add" id="add-project"> Add Project </button>
+               <form id="create-proj">
+
+                  <div id="proj-name-container">
+                     <label for="proj-name"> Name: </label>
+                     <input type="text" name="proj-name" id = "proj-name">
+                  </div>
+                  
+                  <div id="proj-action-buttons">
+                     <input id = "add-proj-button" type="submit" value="Add">
+                     <button id = "cancel-proj-button"> Cancel </button>
+                  </div>
+               
+               </form>
+             </div>
+            <button class="add" id="inbox">Inbox</button>
+         </div>
          <!-- <h3 id="timer">Pomodoro Timer</h3> -->
       </div>
    </div>
    <div id="container">
    </div>
-   <footer> Made by Aya Moosa</footer>
+   <footer> Made by Aya Moosa </footer>
  </body>
  </html>

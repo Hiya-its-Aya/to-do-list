@@ -103,9 +103,14 @@ h3{
     font-size: 1.2rem;
 }
 #project-container,
-.add-proj-container{
+.add-proj-container, 
+#created-projects{
     display: flex;
     flex-direction: column;
+}
+
+#created-projects{
+    flex-direction: column-reverse;
 }
 
 .add-proj-container{
@@ -134,7 +139,7 @@ h3{
 }
 
 #create-proj{
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     display: none;
 }
